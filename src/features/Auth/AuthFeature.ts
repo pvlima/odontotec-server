@@ -14,7 +14,7 @@ interface IResponse {
 }
 
 @injectable()
-export default class AuthUseCase {
+export default class AuthFeature {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,

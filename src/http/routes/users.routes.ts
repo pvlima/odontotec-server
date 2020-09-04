@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import ListUsersController from '../../useCases/ListUsers/ListUsersController';
+import ListUsersController from '../../features/ListUsers/ListUsersController';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 const usersRoutes = Router();

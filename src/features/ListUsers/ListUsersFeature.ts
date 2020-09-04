@@ -3,7 +3,7 @@ import User from '../../database/entities/User';
 import IUsersRepository from '../../repositories/IUsersRepository';
 
 @injectable()
-export default class ListUsersUseCase {
+export default class ListUsersFeature {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,

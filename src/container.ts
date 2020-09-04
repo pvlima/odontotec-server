@@ -1,3 +1,3 @@
 import './providers';
 
-import './useCases/ListUsers';
+import './features/ListUsers';

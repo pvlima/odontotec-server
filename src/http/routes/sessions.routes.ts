@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import AuthController from '../../useCases/Auth/AuthController';
+import AuthController from '../../features/Auth/AuthController';
 
 const authController = new AuthController();
 
