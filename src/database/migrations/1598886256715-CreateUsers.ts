@@ -42,7 +42,7 @@ export default class CreateUsers1598886256715 implements MigrationInterface {
             columnNames: ['name'],
           },
           {
-            name: 'users_name_uidx',
+            name: 'users_email_uidx',
             columnNames: ['email'],
             isUnique: true,
           },
