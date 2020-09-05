@@ -1,7 +1,9 @@
-import { Repository, getRepository } from 'typeorm';
+import { Repository, getRepository, Raw } from 'typeorm';
 
 import Client from '../entities/Client';
-import IClientsRepository from '../../repositories/IClientsRepository';
+import IClientsRepository, {
+  FindClientsConditions,
+} from '../../repositories/IClientsRepository';
 import ICreateClientDTO from '../../features/CreateClient/ICreateClientDTO';
 
 export default class ClientsRepository implements IClientsRepository {
@@ -11,8 +13,16 @@ export default class ClientsRepository implements IClientsRepository {
     this.ormRepository = getRepository(Client);
   }
 
-  public async findAll(): Promise<Client[]> {
-    const clients = await this.ormRepository.find();
+  public async findAll(conditions?: FindClientsConditions): Promise<Client[]> {
+    let clients: Client[] = [];
+    if (conditions?.name) {
+      clients = await this.ormRepository.find({
+        name: Raw(alias => `${alias} ILIKE '%${conditions.name}%'`),
+      });
+    } else {
+      clients = await this.ormRepository.find();
+    }
+
     return clients;
   }
 

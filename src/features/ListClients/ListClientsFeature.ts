@@ -1,5 +1,7 @@
 import { injectable, inject } from 'tsyringe';
-import IClientsRepository from '../../repositories/IClientsRepository';
+import IClientsRepository, {
+  FindClientsConditions,
+} from '../../repositories/IClientsRepository';
 import Client from '../../database/entities/Client';
 
 @injectable()
@@ -9,7 +11,9 @@ export default class ListClientsFeature {
     private clientsRepository: IClientsRepository,
   ) {}
 
-  public async execute(): Promise<Client[]> {
-    return this.clientsRepository.findAll();
+  public async execute(conditions?: FindClientsConditions): Promise<Client[]> {
+    const clients = await this.clientsRepository.findAll(conditions);
+
+    return clients;
   }
 }
