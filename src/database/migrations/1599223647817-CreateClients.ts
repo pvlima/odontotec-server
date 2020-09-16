@@ -38,7 +38,8 @@ export default class CreateClients1599223647817 implements MigrationInterface {
           },
           {
             name: 'cpf',
-            type: 'int',
+            type: 'varchar',
+            length: '14',
             isNullable: true,
           },
           {

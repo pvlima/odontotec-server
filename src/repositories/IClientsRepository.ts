@@ -11,4 +11,5 @@ export default interface IClientsRepository {
   findByPhone(phone: string): Promise<Client | undefined>;
   create(data: ICreateClientDTO): Promise<Client>;
   save(data: Client): Promise<Client>;
+  deleteById(id: string): Promise<boolean>;
 }
