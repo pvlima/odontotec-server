@@ -1,17 +1,19 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
+import { id, timestamps } from '../utils';
+
 export default class CreateUsers1598886256715 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
         name: 'users',
         columns: [
+          id,
           {
-            name: 'id',
-            type: 'uuid',
-            isPrimary: true,
-            generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()',
+            name: 'type',
+            type: 'enum',
+            enumName: 'users_type_enum',
+            enum: ['super', 'dentist', 'clerk'],
           },
           {
             name: 'name',
@@ -25,15 +27,10 @@ export default class CreateUsers1598886256715 implements MigrationInterface {
             name: 'password',
             type: 'varchar',
           },
+          ...timestamps,
           {
-            name: 'updated_at',
-            type: 'timestamp',
-            default: 'now()',
-          },
-          {
-            name: 'created_at',
-            type: 'timestamp',
-            default: 'now()',
+            name: 'office_id',
+            type: 'uuid',
           },
         ],
         indices: [
@@ -45,6 +42,14 @@ export default class CreateUsers1598886256715 implements MigrationInterface {
             name: 'users_email_uidx',
             columnNames: ['email'],
             isUnique: true,
+          },
+        ],
+        foreignKeys: [
+          {
+            name: 'users_office_id_fkey',
+            columnNames: ['office_id'],
+            referencedTableName: 'offices',
+            referencedColumnNames: ['id'],
           },
         ],
       }),
