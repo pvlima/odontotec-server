@@ -10,7 +10,7 @@ export default class ListDentistsFeature {
   ) {}
 
   public async execute(): Promise<User[]> {
-    const dentists = this.usersRepository.findByType('dentist');
+    const dentists = await this.usersRepository.findByType('dentist');
     return dentists;
   }
 }

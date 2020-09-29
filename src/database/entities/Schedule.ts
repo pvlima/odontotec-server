@@ -36,11 +36,11 @@ export default class Schedule {
   @Column('uuid')
   client_id: string;
 
-  @ManyToOne(() => User, user => user.schedules)
+  @ManyToOne(() => User, user => user.schedules, { eager: true })
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @ManyToOne(() => Client, client => client.schedules)
+  @ManyToOne(() => Client, client => client.schedules, { eager: true })
   @JoinColumn({ name: 'client_id' })
   client: Client;
 }
