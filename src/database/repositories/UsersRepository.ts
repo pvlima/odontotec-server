@@ -25,6 +25,13 @@ export default class UsersRepository implements IUsersRepository {
     return user;
   }
 
+  public async findByType(
+    type: 'super' | 'dentist' | 'clerk',
+  ): Promise<User[]> {
+    const users = await this.ormRepository.find({ where: { type } });
+    return users;
+  }
+
   public async save(user: User): Promise<User> {
     return this.ormRepository.save(user);
   }

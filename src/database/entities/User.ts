@@ -11,6 +11,9 @@ export default class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column('enum')
+  type: string;
+
   @Column()
   name: string;
 
