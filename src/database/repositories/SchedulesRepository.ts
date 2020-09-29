@@ -37,6 +37,9 @@ export default class SchedulesRepository implements ISchedulesRepository {
             field => `to_char(${field}, 'DD-MM-YYYY') = '${parsedDate}'`,
           ),
         },
+        order: {
+          date: 'ASC',
+        },
       });
     } else {
       schedules = await this.ormRepository.find({
