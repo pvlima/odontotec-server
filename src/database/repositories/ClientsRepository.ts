@@ -1,4 +1,5 @@
 import { Repository, getRepository, Raw } from 'typeorm';
+import { format } from 'date-fns';
 
 import Client from '../entities/Client';
 import IClientsRepository, {
@@ -29,6 +30,18 @@ export default class ClientsRepository implements IClientsRepository {
   public async findById(id: string): Promise<Client | undefined> {
     const client = await this.ormRepository.findOne(id);
     return client;
+  }
+
+  public async findAllByBirth(date: Date): Promise<Client[]> {
+    const parsedDate = format(date, 'dd-MM');
+
+    const birthdays = await this.ormRepository.find({
+      where: {
+        birth: Raw(field => `to_char(${field}, 'DD-MM') = '${parsedDate}'`),
+      },
+    });
+
+    return birthdays;
   }
 
   public async findByPhone(phone: string): Promise<Client | undefined> {
