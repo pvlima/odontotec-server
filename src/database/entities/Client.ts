@@ -4,7 +4,9 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+import Schedule from './Schedule';
 
 @Entity('clients')
 export default class Client {
@@ -46,4 +48,7 @@ export default class Client {
 
   @Column('uuid')
   office_id: string;
+
+  @OneToMany(() => Schedule, schedule => schedule.client)
+  schedules: Schedule[];
 }
