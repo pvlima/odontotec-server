@@ -43,6 +43,7 @@ export default class CreateClients1599223647817 implements MigrationInterface {
             type: 'enum',
             enumName: 'clients_gender_enum',
             enum: ['M', 'F'],
+            isNullable: true,
           },
           {
             name: 'birth',

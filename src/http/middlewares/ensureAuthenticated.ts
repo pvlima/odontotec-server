@@ -4,6 +4,7 @@ import AppError from '../../errors/AppError';
 import authConfig from '../../config/auth';
 
 interface TokenPayload {
+  office_id: string;
   iat: number;
   exp: number;
   sub: string;
@@ -25,10 +26,11 @@ export default function ensureAuthenticated(
   try {
     const decoded = verify(token, authConfig.jwt.secret);
 
-    const { sub } = decoded as TokenPayload;
+    const { office_id, sub } = decoded as TokenPayload;
 
     req.user = {
       id: sub,
+      office_id,
     };
 
     return next();

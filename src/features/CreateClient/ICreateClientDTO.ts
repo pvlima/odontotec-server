@@ -8,4 +8,5 @@ export default interface ICreateClientDTO {
   birth?: Date;
   address?: string;
   city?: string;
+  office_id: string;
 }

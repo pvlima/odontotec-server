@@ -25,4 +25,7 @@ export default class User {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @Column('uuid')
+  office_id: string;
 }

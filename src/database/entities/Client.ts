@@ -43,4 +43,7 @@ export default class Client {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @Column('uuid')
+  office_id: string;
 }

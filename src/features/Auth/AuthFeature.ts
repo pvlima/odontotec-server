@@ -41,10 +41,16 @@ export default class AuthFeature {
 
     const { secret, expiresIn } = authConfig.jwt;
 
-    const token = sign({}, secret, {
-      subject: user.id,
-      expiresIn,
-    });
+    const token = sign(
+      {
+        office_id: user.office_id,
+      },
+      secret,
+      {
+        subject: user.id,
+        expiresIn,
+      },
+    );
 
     return { token, user };
   }

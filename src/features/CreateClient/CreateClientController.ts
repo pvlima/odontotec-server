@@ -17,6 +17,8 @@ export default class CreateClientController {
       city,
     } = req.body;
 
+    const { office_id } = req.user;
+
     const createClient = container.resolve(CreateClientFeature);
     const client = await createClient.execute({
       name,
@@ -28,6 +30,7 @@ export default class CreateClientController {
       birth,
       address,
       city,
+      office_id,
     });
 
     return res.json(client);
