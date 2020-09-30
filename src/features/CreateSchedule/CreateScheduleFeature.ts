@@ -28,7 +28,7 @@ export default class CreateScheduleFeature {
   }: IRequest): Promise<Schedule> {
     const formattedDate = new Date(date);
     const [hour, minutes] = time.split(':');
-    formattedDate.setHours(Number(hour), Number(minutes));
+    formattedDate.setHours(Number(hour) + 3, Number(minutes));
 
     const schedules = await this.schedulesRepository.create({
       user_id,
