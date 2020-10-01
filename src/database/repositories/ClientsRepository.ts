@@ -27,6 +27,12 @@ export default class ClientsRepository implements IClientsRepository {
     return clients;
   }
 
+  public async count(): Promise<number> {
+    const count = await this.ormRepository.count();
+
+    return count;
+  }
+
   public async findById(id: string): Promise<Client | undefined> {
     const client = await this.ormRepository.findOne(id);
     return client;

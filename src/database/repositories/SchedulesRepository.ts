@@ -56,6 +56,13 @@ export default class SchedulesRepository implements ISchedulesRepository {
     return schedules;
   }
 
+  public async countByUserId(user_id: string): Promise<number> {
+    const schedules = await this.ormRepository.count({
+      where: { user_id },
+    });
+    return schedules;
+  }
+
   public async findAllByClientId(client_id: string): Promise<Schedule[]> {
     const schedules = await this.ormRepository.find({ where: { client_id } });
     return schedules;

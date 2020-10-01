@@ -6,6 +6,7 @@ export default interface ISchedulesRepository {
   findAllByOfficeId(office_id: string): Promise<Schedule[]>;
   findAllByOfficeIdAndDate(office_id: string, date?: Date): Promise<Schedule[]>;
   findAllByUserId(user_id: string): Promise<Schedule[]>;
+  countByUserId(user_id: string): Promise<number>;
   findAllByClientId(client_id: string): Promise<Schedule[]>;
   findById(id: string): Promise<Schedule | undefined>;
   create(data: ICreateScheduleDTO): Promise<Schedule>;

@@ -13,4 +13,5 @@ export default interface IClientsRepository {
   create(data: ICreateClientDTO): Promise<Client>;
   save(data: Client): Promise<Client>;
   deleteById(id: string): Promise<boolean>;
+  count(): Promise<number>;
 }
