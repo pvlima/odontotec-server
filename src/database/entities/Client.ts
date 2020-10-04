@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
+import ClientRecord from './ClientRecord';
 import Schedule from './Schedule';
 
 @Entity('clients')
@@ -51,4 +52,7 @@ export default class Client {
 
   @OneToMany(() => Schedule, schedule => schedule.client)
   schedules: Schedule[];
+
+  @OneToMany(() => ClientRecord, record => record.client, { eager: true })
+  records: ClientRecord[];
 }

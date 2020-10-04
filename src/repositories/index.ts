@@ -9,6 +9,9 @@ import UsersRepository from '../database/repositories/UsersRepository';
 import ISchedulesRepository from './ISchedulesRepository';
 import SchedulesRepository from '../database/repositories/SchedulesRepository';
 
+import IClientRecordsRepository from './IClientRecordsRepository';
+import ClientRecordsRepository from '../database/repositories/ClientRecordsRepository';
+
 container.registerSingleton<IClientsRepository>(
   'ClientsRepository',
   ClientsRepository,
@@ -22,4 +25,9 @@ container.registerSingleton<IUsersRepository>(
 container.registerSingleton<ISchedulesRepository>(
   'SchedulesRepository',
   SchedulesRepository,
+);
+
+container.registerSingleton<IClientRecordsRepository>(
+  'ClientRecordsRepository',
+  ClientRecordsRepository,
 );
