@@ -15,6 +15,7 @@ export default class CreateClientController {
       birth,
       address,
       city,
+      general_info,
     } = req.body;
 
     const { office_id } = req.user;
@@ -31,6 +32,7 @@ export default class CreateClientController {
       address,
       city,
       office_id,
+      general_info,
     });
 
     return res.json(client);

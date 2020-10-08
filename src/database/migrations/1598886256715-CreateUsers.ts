@@ -50,6 +50,8 @@ export default class CreateUsers1598886256715 implements MigrationInterface {
             columnNames: ['office_id'],
             referencedTableName: 'offices',
             referencedColumnNames: ['id'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
           },
         ],
       }),

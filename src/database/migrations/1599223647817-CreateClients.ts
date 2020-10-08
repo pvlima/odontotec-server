@@ -60,6 +60,11 @@ export default class CreateClients1599223647817 implements MigrationInterface {
             type: 'varchar',
             isNullable: true,
           },
+          {
+            name: 'general_info',
+            type: 'varchar',
+            isNullable: true,
+          },
           ...timestamps,
           {
             name: 'office_id',
@@ -98,6 +103,8 @@ export default class CreateClients1599223647817 implements MigrationInterface {
             columnNames: ['office_id'],
             referencedTableName: 'offices',
             referencedColumnNames: ['id'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
           },
         ],
       }),

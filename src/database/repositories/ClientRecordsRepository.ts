@@ -43,4 +43,9 @@ export default class ClientRecordsRepository
     const deleted = await this.ormRepository.delete({ id });
     return !!deleted.affected;
   }
+
+  public async deleteAllByClientId(client_id: string): Promise<boolean> {
+    const deleted = await this.ormRepository.delete({ client_id });
+    return !!deleted.affected;
+  }
 }

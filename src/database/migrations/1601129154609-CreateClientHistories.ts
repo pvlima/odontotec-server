@@ -250,6 +250,8 @@ export default class CreateClientHistories1601129154609
             columnNames: ['client_id'],
             referencedTableName: 'clients',
             referencedColumnNames: ['id'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
           },
         ],
       }),

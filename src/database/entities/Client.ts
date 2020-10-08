@@ -41,6 +41,9 @@ export default class Client {
   @Column()
   city: string;
 
+  @Column('text')
+  general_info: string;
+
   @UpdateDateColumn()
   updated_at: Date;
 

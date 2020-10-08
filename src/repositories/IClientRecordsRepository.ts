@@ -7,4 +7,5 @@ export default interface IClientRecordsRepository {
   createMany(data: ICreateClientRecordDTO[]): Promise<ClientRecord[]>;
   save(data: ClientRecord): Promise<ClientRecord>;
   deleteById(id: string): Promise<boolean>;
+  deleteAllByClientId(client_id: string): Promise<boolean>;
 }

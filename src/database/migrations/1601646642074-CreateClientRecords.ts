@@ -30,6 +30,8 @@ export default class CreateClientRecords1601646642074
             columnNames: ['client_id'],
             referencedTableName: 'clients',
             referencedColumnNames: ['id'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
           },
         ],
       }),
